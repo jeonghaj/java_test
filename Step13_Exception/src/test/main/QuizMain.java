@@ -18,8 +18,8 @@ package test.main;
  */
 public class QuizMain {
 	public static void main(String[] args) {
-		int num2=0;
-		int num1=0;
+		int min=0;
+		int sec=0;
 		
 		while(true) {
 
@@ -29,20 +29,12 @@ public class QuizMain {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			num1++;	
-			System.out.println(num2+"분"+num1+"초");
-			if(num1==1&&num2==2) {
-				break;
-			}
-			if(num1==59) {
-				num2++;
-				num1=-1;
-			}
-			
-			}
-				
-			
-			
-			
-		}
+			sec++;
+			if(sec==60) {
+				min++;
+				sec=0;
+				}	
+			System.out.println(min+"분"+sec+"초");
+			}		
 	}
+}
