@@ -2,6 +2,7 @@ package frame09;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -9,7 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
 public class MyFrame extends JFrame {
-	
+
 	//생성자
 	public MyFrame(String title) {
 		//부모생성자 호출
@@ -41,6 +42,20 @@ public class MyFrame extends JFrame {
 		//메뉴 아이템에 액션 리스너 등록
 		newItem.addActionListener((e)->{
 			ta.setVisible(true);
+		});
+		
+		
+		JButton btn = new JButton("누르시오");
+		add(btn, BorderLayout.SOUTH);
+		// 버튼에 리스너 등록하기
+		btn.addActionListener((e)->{
+			System.out.println("10초 걸리는 작업을 수행중");
+			try {
+				Thread.sleep(1000*10);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			
 		});
 	}
 
