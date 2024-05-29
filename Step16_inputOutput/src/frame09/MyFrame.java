@@ -96,6 +96,7 @@ public class MyFrame extends JFrame {
 		openItem.addActionListener((e)->{
 			JFileChooser fc=new JFileChooser("C:/Users/user/playground");
 			int result = fc.showOpenDialog(this);
+			
 			if (result == JFileChooser.APPROVE_OPTION) {
 				//선택한 파일을 제어할 수 있는 File 객체의 참조값 얻어내서 필드에 저장하기
 				openedFile=fc.getSelectedFile();
@@ -104,6 +105,7 @@ public class MyFrame extends JFrame {
 				//프레임의 setTitle() 메소드를 이용해서 제목 수정하기
 				setTitle(fileName);
 				ta.setVisible(true);
+				
 				loadFromFile();
 				//파일에서 문자열을 읽어와서 JtextArea 에 출력하기
 				
@@ -111,6 +113,7 @@ public class MyFrame extends JFrame {
 		});
 
 	}//생성자
+	
 	// 선택된 파일로 부터 문자열을 읽어와서 JTextArea 에 출력하는 메소드
 	public void loadFromFile() {
 		FileReader fr=null;
