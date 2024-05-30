@@ -81,6 +81,7 @@ public class MyFrame extends JFrame {
 			if(result == JFileChooser.APPROVE_OPTION) {
 				//선택된 file 객체의 참조값을 필드에 저장
 				openedFile=fc.getSelectedFile();
+				//선택한 파일을 제어할 수 있는 File 객체의 참조값 얻어내서 필드에 저장하기
 				setTitle(openedFile.getName());
 				
 				//새로운 파일 실제로 만들기

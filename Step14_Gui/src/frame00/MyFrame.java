@@ -34,7 +34,6 @@ public class MyFrame extends JFrame implements ActionListener{
 		
 		Btn.addActionListener(this);
 		
-		
 		this.setVisible(true);
 	}
 	
