@@ -2,16 +2,12 @@ package frame09;
 
 import java.awt.BorderLayout;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class MyFrame2 extends JFrame {
@@ -30,6 +26,7 @@ public class MyFrame2 extends JFrame {
 		JMenuBar mb=new JMenuBar();
 		//메뉴
 		JMenu menu=new JMenu("file");
+		JMenu menu2=new JMenu("folder");
 		//메뉴 아이템
 		JMenuItem newItem=new JMenuItem("new");
 		JMenuItem openItem=new JMenuItem("open");
@@ -42,6 +39,7 @@ public class MyFrame2 extends JFrame {
 		menu.add(saveAsItem);
 		//메뉴를 메뉴바에 추가
 		mb.add(menu);
+		mb.add(menu2);
 		//프레임 메소드를 이용해서 메뉴바를 추가하기
 		setJMenuBar(mb);
 		
@@ -56,50 +54,18 @@ public class MyFrame2 extends JFrame {
 		this.setTitle("제목없음");
 		});
 		
-		//save as 를 눌렀을때 실행할 리스너 등록
 		saveAsItem.addActionListener((e)->{
-			//파일 선택을 도와주는 객체 생성
-			var fc=new JFileChooser("C:/Users/user/playground/myFolder");
+			var fc=new JFileChooser("C:\\Users\\user\\playground\\myFolder");
 			int result = fc.showSaveDialog(this);
 			
-			//만일 제대로 파일을 만들 준비를 했다면
 			if(result == JFileChooser.APPROVE_OPTION) {
-				//선택된 file 객체의 참조값을 필드에 저장
-				openedFile=fc.getSelectedFile();
-				setTitle(openedFile.getName());
-				
-				//새로운 파일 실제로 만들기
-				try {
-					openedFile.createNewFile();
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-				this.saveToFile();
+				openedFile = fc.getSelectedFile();
+				this.setTitle(openedFile.getName());
 			}
+			
 		});
-
 	}//생성자
 	
-	//현재까지 JTextArea 에 입력된 문자열을 읽어와서 File 에 저장하기
-	public void saveToFile() {
-		//입력한 문자열 읽어오기
-		String content=ta.getText();
-		
-		FileWriter fw=null;
-		try {
-			//선택한 File 객체의 참조값을 생성자에 넘겨주면서 FileWriter 객체 생성하기 
-			fw = new FileWriter(openedFile);
-			fw.write(content);
-			fw.flush();
-			JOptionPane.showMessageDialog(this, "저장 했습니다.");
-		}catch(Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				fw.close();
-			}catch(Exception e) {}
-		}
-	}
 	
 	public static void main(String[] args) {
 		MyFrame2 f=new MyFrame2("타이틀");
