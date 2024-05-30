@@ -22,6 +22,7 @@ public class MainClass12 {
 				if(readedCount == -1) break; // 더이상 읽을 데이터 없으면 탈출
 				//byte[] 배열에 저장된 byte 알갱이를 0번 인덱스부터 읽은 갯수만큼 출력
 				fos.write(buffer,0 , readedCount);
+	
 			}
 			System.out.println("파일을 copy 했습니다.");
 			fos.close();

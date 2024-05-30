@@ -95,7 +95,7 @@ public class MyFrame extends JFrame {
 		});
 		
 		openItem.addActionListener((e)->{
-			JFileChooser fc=new JFileChooser("C:/Users/user/playground");
+			JFileChooser fc=new JFileChooser("C:/Users/user/playground/myFolder");
 			int result = fc.showOpenDialog(this);
 			
 			if (result == JFileChooser.APPROVE_OPTION) {
@@ -106,14 +106,22 @@ public class MyFrame extends JFrame {
 				//프레임의 setTitle() 메소드를 이용해서 제목 수정하기
 				setTitle(fileName);
 				ta.setVisible(true);
-				
+				//문자열 로딩
 				loadFromFile();
-				//파일에서 문자열을 읽어와서 JtextArea 에 출력하기
+				//saveItme, saveAsItem을 활성화한다
+				saveAsItem.setEnabled(true);
+				saveItem.setEnabled(true);
 				
 			}
 		});
+		
+		saveItem.addActionListener((e)->{
+			
+			saveToFile();
+		});
 
 	}//생성자
+	
 	
 	// 선택된 파일로 부터 문자열을 읽어와서 JTextArea 에 출력하는 메소드
 	public void loadFromFile() {
@@ -121,14 +129,26 @@ public class MyFrame extends JFrame {
 		BufferedReader br=null;
 		
 		try {
+			//필드에 저장되어 있는 File 객체를 이용해서 FileReader 객체를 생성한다.
 			fr=new FileReader(openedFile);
+			// 좀 더 편하게 문자열을 읽어들이기 위해 FileReader 객체에 BufferedReader 로 포장한다.
 			br=new BufferedReader(fr);
+			while(true) {
 			String result = br.readLine();
-			ta.setText(result);
-			
+			if(result==null) break;
+			//JTextArae 에 1줄씩 추가
+			ta.append(result+"\n\r"); // 개행기호 추가
+			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(fr!=null)fr.close();
+				if(br!=null)br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}
