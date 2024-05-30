@@ -78,20 +78,9 @@ public class MemberFrame extends JFrame implements ActionListener{
 		// JScrollPane 을 프레임의 가운데에 배치하기
 		add(scroll, BorderLayout.CENTER);
 		
-		//샘플데이터 담기
-		Object[] data1 = {1,"김구라","노량진"};
-		Object[] data2 = {2,"해골","행신동"};
-		
-		model.addRow(data1);
-		model.addRow(data2);
-		
-		Vector<Object> data3 = new Vector<>();
-		data3.add(3);
-		data3.add("원숭이");
-		data3.add("동물원");
-		model.addRow(data3);
 		//버튼에 액션리스너 등록
 		addBtn.addActionListener(this);
+		deleteBtn.addActionListener(this);
 		
 		loadFromFile();
 		refreshTable();
@@ -163,10 +152,6 @@ public class MemberFrame extends JFrame implements ActionListener{
 			int num = Integer.parseInt(inputNum.getText());	
 			String name = inputName.getText();	
 			String addr = inputAddr.getText();
-			
-			Object[] data = {num, name, addr};
-			
-			model.addRow(data);	
 			
 			// list 회원 한명의 정보를 담기
 			MemberDto dto = new MemberDto(num,name,addr);
