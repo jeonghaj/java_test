@@ -78,6 +78,11 @@ public class MemberFrame extends JFrame implements ActionListener{
 		// JScrollPane 을 프레임의 가운데에 배치하기
 		add(scroll, BorderLayout.CENTER);
 		
+		//1. 입력된 데이터를 추가 버튼을 누르면 읽어서 배열에 저장하기 (내부로 읽기)
+		//2. 읽어들인 배열 데이터를 외부 파일에 저장하기 (외부로 쓰기)
+		//3. 외부 파일에 저장된 배열 데이터를 불러오기(외부에서 읽기)
+		//4. 배열데이터에 저장된 데이터를 테이블에 저장하기 (내부로 쓰기)
+		
 		//버튼에 액션리스너 등록
 		addBtn.addActionListener(this);
 		deleteBtn.addActionListener(this);
@@ -87,7 +92,7 @@ public class MemberFrame extends JFrame implements ActionListener{
 	
 	}
 	
-	//필드에 있는 List<MemberDto> 를 이용해서 JTable 에 목록을 출력하는 메소드
+	//4444필드에 있는 List<MemberDto> 를 이용해서 JTable 에 목록을 출력하는 메소드
 	public void refreshTable() {
 		//기존에 출력된 내용은 한번 지워준다.
 		model.setRowCount(0);
@@ -101,7 +106,7 @@ public class MemberFrame extends JFrame implements ActionListener{
 	}
 	
 	
-	//members.dat 파일로부터 List<MemberDto> 객체를 얻어와서 필드에 저장하는 메소드
+	//3members.dat 파일로부터 List<MemberDto> 객체를 얻어와서 필드에 저장하는 메소드
 	public void loadFromFile() {
 		//필요한 객체에 담을 지역변수 미리 만들기
 		FileInputStream fis = null;
@@ -137,9 +142,9 @@ public class MemberFrame extends JFrame implements ActionListener{
 		f.setVisible(true);
 	}
 	
-	//입력된 데이터를 테이블에 담는 메소드
+	//1.버튼을 누르면 입력된 데이터를 테이블에 담는 메소드
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { 
 		//이벤트가 발생한 UI 에 설정된 ActionCommand 문자열 읽어오기
 		String command = e.getActionCommand();
 		/*
@@ -176,7 +181,7 @@ public class MemberFrame extends JFrame implements ActionListener{
 		
 	}
 	
-	// List<MemberDto> 객체를 파일에 저장하는 메소드
+	//2 List<MemberDto> 객체를 파일에 저장하는 메소드
 	public void saveToFile() {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
