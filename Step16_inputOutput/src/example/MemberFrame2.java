@@ -104,7 +104,7 @@ public class MemberFrame2 extends JFrame implements ActionListener{
 		FileInputStream fis=null;
 		ObjectInputStream ois=null;
 		try {
-			File file=new File("C:/Users/user/playground/myFolder/members.dat");
+			File file=new File("C:/Users/JANG/eclipse-workspace/myFolder/member.dat");
 			if(!file.exists()) {
 				file.createNewFile();
 			}
@@ -174,7 +174,7 @@ public class MemberFrame2 extends JFrame implements ActionListener{
 		FileOutputStream fos=null;
 		ObjectOutputStream oos=null;
 		try {
-			File file=new File("C:/Users/user/playground/myFolder/members.dat");
+			File file=new File("C:/Users/JANG/eclipse-workspace/myFolder/member.dat");
 			//만일 해당 파일이 존재 하지 않으면 
 			if(!file.exists()) {
 				//새로 만든다
