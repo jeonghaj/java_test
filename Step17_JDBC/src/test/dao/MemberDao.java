@@ -173,21 +173,32 @@ public class MemberDao {
 			}
 		
 	public MemberDto getData(int num) {
+		//MemberDto 객체릐 참조값을 담을 변수 미리 만들기
+		MemberDto dto = null;
+		
+		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			conn=new DBConnector().getConn();
 			//실행할 select 문 구성하기 selection 인자가 있다면 미완성도 가능하다 
-			String sql="";
+			String sql="select num, name, addr"
+					+ " from member"
+					+ " where num=?";
 			pstmt=conn.prepareStatement(sql);
 			//select 문이 미완성이라면 여기서 완성한다.
-			
+			pstmt.setInt(1, num);
 			//select 문 실행하고 결과를 ResultSet 객체로 받아온다.
 			rs=pstmt.executeQuery();
 			//select 된 row 가 여러개라면 반복문 돌면서 추출한다.
-			while(rs.next()) {
-				
+			if(rs.next()) {
+				//MemberDto 객체를 생성해서
+				dto=new MemberDto();
+				//회원정보를 담는다.
+				dto.setNum(rs.getInt("num"));
+				dto.setName(rs.getString("name"));
+				dto.setAddr(rs.getString("addr"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -197,10 +208,9 @@ public class MemberDao {
 				if(pstmt!=null)pstmt.close();
 				if(conn!=null)conn.close();
 			}catch(Exception e) {
-				
 			}
-		}
-		return null;
-	}
+		}//finally
+		return dto;
+	} //class
 	
 }	

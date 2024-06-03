@@ -3,7 +3,6 @@
     <fullyQualifiedTypeName name="sample.pac.Car"/>
     <fullyQualifiedTypeName name="sample.pac.SecondCar"/>
     <fullyQualifiedTypeName name="java.lang.System.Logger"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
@@ -38,6 +37,7 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="test.util.DBConnector"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="test.dao.MemberDao"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="test.dao.MemberDao"/>
 </qualifiedTypeNameHistroy>
